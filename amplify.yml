@@ -1,21 +1,20 @@
 version: 1
-applications:
-  - appRoot: .
-    frontend:
-      phases:
-        preBuild:
-          commands:
-            - npm ci
-            - npm install vite @vitejs/plugin-react --save-dev
-            - cp amplify_outputs.json dist/  # Add this line
-        build:
-          commands:
-            - npm run build
-      artifacts:
-        baseDirectory: dist
-        files:
-          - '**/*'
-          - amplify_outputs.json  # Add this line
-      cache:
-        paths:
-          - node_modules/**/*
+backend:
+  phases:
+    build:
+      commands:
+        - npm ci --cache .npm --prefer-offline
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+frontend:
+  phases:
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .npm/**/*
+      - node_modules/**/*

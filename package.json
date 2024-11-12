@@ -1,41 +1,37 @@
 {
-  "name": "virtualpets",
-  "version": "1.0.0",
+  "name": "amplify-vite-react-template",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "backend-build": "backend-cli build",
-    "sandbox": "ampx sandbox"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@aws-amplify/backend": "^1.6.2",
-    "@aws-amplify/backend-cli": "^1.4.1",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.2.0",
-    "aws-cdk": "^2.166.0",
-    "aws-cdk-lib": "^2.166.0",
-    "constructs": "^10.4.2",
-    "esbuild": "^0.24.0",
-    "json-schema-to-ts": "^3.1.1",
-    "ts-algebra": "^2.0.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3",
-    "vite": "^5.0.0"
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@aws-amplify/cli": "^11.0.0-beta.8",
     "@aws-amplify/ui-react": "^6.5.5",
-    "aws-amplify": "^6.8.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "aws-amplify": "^6.6.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.5.0",
+    "@aws-amplify/backend-cli": "^1.2.9",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "aws-cdk": "^2.138.0",
+    "aws-cdk-lib": "^2.138.0",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.4.10"
   }
 }

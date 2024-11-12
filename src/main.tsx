@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./index.tsx";
+import AuthenticatedApp from "./Authencation";
 import "./index.css";
 import { Amplify } from 'aws-amplify';  // Add this import
-import config from '@root/amplify_outputs.json';  // Add this import
+// import config from "../amplify_outputs.json";
 
-Amplify.configure(config);
+Amplify.configure({});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <AuthenticatedApp />
   </React.StrictMode>
 );
