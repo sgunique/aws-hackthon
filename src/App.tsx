@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCurrentUser } from 'aws-amplify/auth';
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
-import '@aws-amplify/ui-react/styles.css';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 const client = generateClient<Schema>();
 
@@ -10,7 +10,7 @@ export const App = () => {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, setUser] = useState<any>();
-
+  const { signOut } = useAuthenticator();
 
   async function checkUser() {
     try {
@@ -33,6 +33,13 @@ export const App = () => {
       console.error('Error fetching todos:', error);
     }
   };
+  
+  useEffect(() => {
+    if (user) {
+      fetchTodos();
+    }
+  }, [user]);
+
 
   // Your todo creation function
   async function addTodo({ title }: { title: string | null }) {
@@ -94,6 +101,7 @@ export const App = () => {
           Review next step of this tutorial.
         </a>
       </div>
+      <button onClick={signOut}>Sign out</button>
     </main>
   );
 }
