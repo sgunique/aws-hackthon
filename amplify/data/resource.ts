@@ -3,7 +3,7 @@ import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      title: a.string(),
       isDone: a.boolean(),
     })
     .authorization((allow) => [allow.guest()]),

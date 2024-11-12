@@ -1,0 +1,21 @@
+version: 1
+applications:
+  - appRoot: .
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+            - npm install vite @vitejs/plugin-react --save-dev
+            - cp amplify_outputs.json dist/  # Add this line
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: dist
+        files:
+          - '**/*'
+          - amplify_outputs.json  # Add this line
+      cache:
+        paths:
+          - node_modules/**/*
