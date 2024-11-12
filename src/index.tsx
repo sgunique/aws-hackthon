@@ -5,11 +5,16 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import '@aws-amplify/ui-react/styles.css';
 
-
 const client = generateClient<Schema>();
 
+type Todo = {
+  title: string;
+  isDone: boolean;
+};
+
+
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [user, setUser] = useState<any>(null);
 
 
@@ -29,6 +34,7 @@ function App() {
   const fetchTodos = async () => {
     try {
       const response = await client.models.Todo.list();
+      console.log(response.data);
       setTodos(response.data);
     } catch (error) {
       console.error('Error fetching todos:', error);
